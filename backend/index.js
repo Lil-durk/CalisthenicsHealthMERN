@@ -23,9 +23,13 @@ app.use(cors());
 
 routes(app);
 
+app.get("/", (req, res) => res.send(`CalisthenicsHealth is running on port ${PORT}`));
 
-app.get("/", (req, res) => res.send(`CalisthenicsHealth is running ${PORT}`));
+var server = app.listen(PORT, () => {
+  console.log(`Listening on port: ${PORT}`);
+});
+// app.listen(PORT, () =>
+//   console.log(`CalisthenicsHealth server is running on port ${PORT}`)
+// );
 
-app.listen(PORT, () =>
-  console.log(`CalisthenicsHealth server is running on port ${PORT}`)
-);
+export default app;
