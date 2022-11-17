@@ -17,8 +17,8 @@ describe("GET requests", () => {
   });
 
   //Get all users
-  it("should return all users (200)", async () => {
-    const response = await request(app).get("/users");
+  it("should return all users (200)", () => {
+    const response = request(app).get("/users");
     expect(response.statusCode).toBe(200);
     expect(response.body.error).toBe(undefined);
   });
