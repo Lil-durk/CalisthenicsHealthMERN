@@ -2,23 +2,7 @@ import mongoose from "mongoose";
 import request from "supertest";
 import app from "../index";
 
-// test("should sign up for a user", async () => {
-//   await request(app)
-//     .post("/users")
-//     .send({
-//       firstName: "Unit",
-//       lastName: "Test",
-//       email: "unit@test.nl",
-//       password: "unittest123",
-//     })
-//     .expect(201);
-// });
-
-// afterAll(async () => {
-//   mongoose.disconnect();
-// });
-
-describe("GET /users", () => {
+describe("CRUD", () => {
   const newUser = {
     _id: 5325783289,
     firstName: "JestTest1",
