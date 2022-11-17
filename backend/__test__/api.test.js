@@ -17,8 +17,8 @@ describe("GET requests", () => {
   });
 
   //Get all users
-  it("should return all users (200)", () => {
-    const response = request(app).get("/users");
+  it("should return all users (200)", async () => {
+    const response = await request(app).get("/users");
     expect(response.statusCode).toBe(200);
     expect(response.body.error).toBe(undefined);
   });
@@ -53,12 +53,12 @@ describe("PUT requests", () => {
   });
 
   it("should update user if it exists", async () => {
-    const response = await request(app).put(`/users/${newUser._id}`).send({
-      completed: true,
-    });
-    expect(response.statusCode).toBe(200);
-    expect(response.body.error).toBe(undefined);
-    //expect(response.body.completed).toBe(true);
+    const updatedUser = await request(app)
+      .put(`/users/${newUser._id}`)
+      .send({ firstName: "DifferentFirstName" });
+    //expect(updatedUser.body.firstName).toBe("DifferentFirstName");
+    expect(updatedUser.statusCode).toBe(200);
+    expect(updatedUser.body.error).toBe(undefined);
   });
 
   afterAll((done) => {
