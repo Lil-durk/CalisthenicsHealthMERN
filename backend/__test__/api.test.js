@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 import request from "supertest";
 import app from "../index";
 
-describe("CRUD", () => {
+describe("GET requests", () => {
   const newUser = {
-    _id: 5325783289,
+    _id: 0,
     firstName: "JestTest1",
     lastName: "testLastName",
     email: "jest@test.nl",
@@ -13,7 +13,7 @@ describe("CRUD", () => {
   beforeAll(async () => {
     //set up the testUser
     await request(app).post("/users").send(newUser);
-    console.log("Test user created!")
+    console.log("GET request test user created!");
   });
 
   //Get all users
@@ -23,17 +23,49 @@ describe("CRUD", () => {
     expect(response.body.error).toBe(undefined);
   });
 
-  it("Should return one user (200)", async () =>{
+  it("Should return one user (200)", async () => {
     const response = await request(app).get(`/users/${newUser._id}`);
     expect(response.statusCode).toBe(200);
     expect(response.body.error).toBe(undefined);
-  })
+  });
 
   afterAll((done) => {
     mongoose.disconnect();
     //delete the testUser
     request(app).delete(`/users/${newUser._id}`);
-    console.log("Test user deleted!")
+    console.log("GET request test user deleted!");
+    done();
+  });
+});
+
+describe("PUT requests", () => {
+  const newUser = {
+    _id: 0,
+    firstName: "JestTest1",
+    lastName: "testLastName",
+    email: "jest@test.nl",
+    password: "jestTest123",
+  };
+  beforeAll(async () => {
+    //set up the testUser
+    await request(app).post("/users").send(newUser);
+    console.log("PUT request test user created!");
+  });
+
+  it("should update user if it exists", async () => {
+    const response = await request(app).put(`/users/${newUser._id}`).send({
+      completed: true,
+    });
+    expect(response.statusCode).toBe(200);
+    expect(response.body.error).toBe(undefined);
+    //expect(response.body.completed).toBe(true);
+  });
+
+  afterAll((done) => {
+    mongoose.disconnect();
+    //delete the testUser
+    request(app).delete(`/users/${newUser._id}`);
+    console.log("PUT reqest test user deleted!");
     done();
   });
 });
