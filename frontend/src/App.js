@@ -9,11 +9,11 @@ import {
 } from "react-router-dom";
 
 // import Home component
-import Home from "./components/Home";
+import Home from "./components/Home.jsx";
 // import About component
-import Login from "./components/Login";
+import Login from "./components/Login.jsx";
 // import ContactUs component
-import Register from "./components/Register";
+import Register from "./components/Register.jsx";
 
 function App() {
   return (
