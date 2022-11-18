@@ -4,7 +4,6 @@ import app from "../index";
 
 describe("GET requests", () => {
   const newUser = {
-    _id: 0,
     firstName: "JestTest1",
     lastName: "testLastName",
     email: "jest@test.nl",
