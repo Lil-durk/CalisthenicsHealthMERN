@@ -9,7 +9,7 @@ const PORT = 3003;
 
 //mongo connection
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://127.0.0.1/calisthenicsDB", {
+mongoose.connect("mongodb+srv://admin:admin123@calisthenicshealthdb.ntpusti.mongodb.net/users", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
