@@ -30,6 +30,7 @@ describe("GET requests", () => {
 
   afterAll((done) => {
     mongoose.disconnect();
+    app.close();
     //delete the testUser
     request(app).delete(`/users/${newUser._id}`);
     console.log("GET request test user deleted!");
