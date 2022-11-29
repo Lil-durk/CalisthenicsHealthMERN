@@ -7,12 +7,13 @@ describe("GET requests", () => {
   let connection;
   let db;
   let server;
-  const newUser = {
-    firstName: "JestTest1",
-    lastName: "testLastName",
-    email: "jest@test.nl",
-    password: "jestTest123",
-  };
+  let mockUser;
+  // const newUser = {
+  //   firstName: "JestTest1",
+  //   lastName: "testLastName",
+  //   email: "jest@test.nl",
+  //   password: "jestTest123",
+  // };
   beforeAll(async () => {
     server = await app.listen(3003);
     connection = await MongoClient.connect(
@@ -23,8 +24,8 @@ describe("GET requests", () => {
       }
     );
     db = await connection.db("users");
-    const users = db.collection('users');
-    const mockUser = {
+    const users = db.collection("users");
+    mockUser = {
       firstName: "John",
       lastName: "Johnsson",
       email: "john@johnsson.com",
@@ -42,59 +43,79 @@ describe("GET requests", () => {
   it("should return all users (200)", async () => {
     const response = await request(app).get("/users");
     expect(response.statusCode).toBe(200);
+    console.log(response._body);
     expect(response.body.length).toBe(1);
     expect(response.body.error).toBe(undefined);
   });
 
   it("Should return one user (200)", async () => {
-    const response = await request(app).get(`/users/${newUser._id}`);
+    const response = await request(app).get(`/users/${mockUser._id}`);
     expect(response.statusCode).toBe(200);
     expect(response.body.error).toBe(undefined);
   });
 
   afterAll(async () => {
-    await db.collection('users').deleteMany({});
+    await db.collection("users").deleteOne({ "_id" : mockUser._id });
     await connection.close();
     mongoose.disconnect();
     await server.close();
-    
+
     //delete the testUser
-    
+
     console.log("DELETE request test user deleted!");
   });
 });
 
-// describe("PUT requests", () => {
-//   const newUser = {
-//     _id: 0,
-//     firstName: "JestTest1",
-//     lastName: "testLastName",
-//     email: "jest@test.nl",
-//     password: "jestTest123",
-//   };
-//   beforeAll(async () => {
-//     //set up the testUser
-//     await request(app).post("/users").send(newUser);
-//     console.log("PUT request test user created!");
-//   });
+describe("PUT requests", () => {
+  let connection;
+  let db;
+  let server;
+  let mockUser;
+  // const newUser = {
+  //   _id: 0,
+  //   firstName: "JestTest1",
+  //   lastName: "testLastName",
+  //   email: "jest@test.nl",
+  //   password: "jestTest123",
+  // };
+  beforeAll(async () => {
+    server = await app.listen(3004);
+    connection = await MongoClient.connect(
+      "mongodb+srv://admin:admin123@calisthenicshealthdb.ntpusti.mongodb.net/users",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
+    db = await connection.db("users");
+    const users = db.collection("users");
+    mockUser = {
+      _id: 0,
+      firstName: "John",
+      lastName: "Johnsson",
+      email: "john@johnsson.com",
+      password: "johnny",
+    };
+    await users.insertOne(mockUser);
+  });
 
-//   it("should update user if it exists", async () => {
-//     const updatedUser = await request(app)
-//       .put(`/users/${newUser._id}`)
-//       .send({ firstName: "DifferentFirstName" });
-//     //expect(updatedUser.body.firstName).toBe("DifferentFirstName");
-//     expect(updatedUser.statusCode).toBe(200);
-//     expect(updatedUser.body.error).toBe(undefined);
-//   });
+  it("should update user if it exists", async () => {
+    const updatedUser = await request(app)
+      .put(`/users/${mockUser._id}`)
+      .send({ firstName: "DifferentFirstName" });
+    //expect(updatedUser.body.firstName).toBe("DifferentFirstName");
+    console.log(updatedUser._body);
+    expect(updatedUser.statusCode).toBe(200);
+    expect(updatedUser.body.error).toBe(undefined);
+  });
 
-//   afterAll((done) => {
-//     mongoose.disconnect();
-//     //delete the testUser
-//     request(app).delete(`/users/${newUser._id}`);
-//     console.log("PUT reqest test user deleted!");
-//     done();
-//   });
-// });
+  afterAll(async () => {
+    await db.collection("users").deleteOne({ "_id" : mockUser._id });
+    await connection.close();
+    mongoose.disconnect();
+    await server.close();
+  });
+});
 
 // const request = require("supertest");
 // const app = require("../index");
