@@ -1,4 +1,4 @@
-name: Build and Test React Application
+name: React CI
 
 # Controls when the action will run. 
 on:
@@ -29,7 +29,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: npm ci, build and test
-        run: |
-          npm ci
-          npm run build --if-present
-          npm test  
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm run test
+        env:
+          CI: true
