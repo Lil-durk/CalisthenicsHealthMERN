@@ -44,7 +44,7 @@ describe("GET requests", () => {
     const response = await request(app).get("/users");
     expect(response.statusCode).toBe(200);
     console.log(response._body);
-    expect(response.body.length).toBe(1);
+    expect(response.body.length).toBe(2);
     expect(response.body.error).toBe(undefined);
   });
 

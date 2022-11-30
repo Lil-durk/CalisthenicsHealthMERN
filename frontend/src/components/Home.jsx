@@ -25,6 +25,7 @@ export default function App() {
     ApiService.getUsers().then((response) => {
       setUsers(response.data);
       console.log(response.data);
+      console.log(users);
     });
   }, []);
 
