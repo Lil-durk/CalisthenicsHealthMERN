@@ -25,34 +25,34 @@ describe("mock App tests", () => {
   });
 });
 
-const userResponse = rest.get(API_BASE_URL, (req, res, ctx) => {
-  return res(
-    ctx.json([
-      {
-        firstName: "John",
-        lastName: "Johnsson",
-        email: "john@johnsson.com",
-        password: "johnny",
-      },
-    ])
-  );
-});
+// const userResponse = rest.get(API_BASE_URL, (req, res, ctx) => {
+//   return res(
+//     ctx.json([
+//       {
+//         firstName: "John",
+//         lastName: "Johnsson",
+//         email: "john@johnsson.com",
+//         password: "johnny",
+//       },
+//     ])
+//   );
+// });
 
-const handler = [userResponse];
+// const handler = [userResponse];
 
-const server = new setupServer(handler);
+// const server = new setupServer(handler);
 
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+// beforeAll(() => server.listen());
+// afterEach(() => server.resetHandlers());
+// afterAll(() => server.close());
 
-describe("get API data", () => {
-  test("should get API data", async () => {
-    render(<ApiService />);
-    const testItem = await screen.find.findByText("Testing testing test");
-    expect(testItem).tobeVisible();
-  });
-});
+// describe("get API data", () => {
+//   test("should get API data", async () => {
+//     render(<ApiService />);
+//     const testItem = await screen.find.findByText("Testing testing test");
+//     expect(testItem).tobeVisible();
+//   });
+// });
 
 // describe("Puppeteer Google example", () => {
 //   beforeAll(async () => {
