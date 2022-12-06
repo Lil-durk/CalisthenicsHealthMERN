@@ -51,6 +51,7 @@ describe("GET requests", () => {
   it("Should return one user (200)", async () => {
     const response = await request(app).get(`/users/${mockUser._id}`);
     expect(response.statusCode).toBe(200);
+    expect(response.body.firstName).toBe('John');
     expect(response.body.error).toBe(undefined);
   });
 

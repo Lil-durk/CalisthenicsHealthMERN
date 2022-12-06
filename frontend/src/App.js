@@ -13,7 +13,7 @@ import Home from "./components/Home.jsx";
 // import About component
 import Login from "./components/Login.jsx";
 // import ContactUs component
-import Register from "./components/Register.jsx";
+import Profile from "./components/Profile.js";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
 
           <Route path="/login" element={<Login />} />
 
-          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </>
