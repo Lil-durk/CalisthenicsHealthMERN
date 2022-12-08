@@ -4,7 +4,7 @@ FROM node:16
 # Sets the Working Directory as "/index"
 WORKDIR /index
 # Copies the package.json file into "/index" and runs npm i
-COPY ./ /index
+COPY package.json .
 RUN npm install
 
 COPY . .
