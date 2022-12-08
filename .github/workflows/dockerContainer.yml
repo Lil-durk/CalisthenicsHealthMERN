@@ -1,4 +1,4 @@
-name: Docker Setup CD
+name: Docker Hub CD backend
 
 on:
   push:
