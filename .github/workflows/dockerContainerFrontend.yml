@@ -23,4 +23,4 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/calisthenicshealth:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/calisthenicshealthfrontend:latest
