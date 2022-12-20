@@ -2,19 +2,13 @@ import React, { useEffect } from "react";
 import ApiService from "./Services/ApiService";
 import Navibar from "./Navibar";
 import "../App.css";
+import Footer from "./Footer";
 
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 //import Button from "@mui/material/Button";
-import {
-  MDBFooter,
-  MDBContainer,
-  MDBCol,
-  MDBRow,
-  MDBIcon,
-  MDBBtn,
-} from "mdb-react-ui-kit";
+
 
 const backgrImg = {
   backgroundImage: `url(https://wallpapercave.com/wp/wp2346534.jpg)`,
@@ -35,16 +29,7 @@ const homeBtn = {
   borderRadius: "50%",
 };
 
-const homeFooter = {
-  marginTop: "10%",  
-  position: "absolute",
-  alignItems: "center",
-  textAlign: "center",
-  bottom: 0,
-  left: "40%",
-  width: "20%",
-  backgroundColor: "white",
-};
+
 
 export default function App() {
   const [users, setUsers] = React.useState([]);
@@ -73,80 +58,14 @@ export default function App() {
       <div style={backgrImg}>
         <Navibar />
 
-        <Button variant="primary" style={homeBtn}>
-          Start your journey!
-        </Button>
+        <Link to="/cardioWorkout">
+          <Button type="button" class="btn btn-primary" style={homeBtn}>
+            Start your journey!
+          </Button>
+        </Link>
 
-          <MDBContainer style={homeFooter} className="p-3 pb-0">
-            <section className="mb-3">
-              <MDBBtn
-                outline
-                color="dark"
-                floating
-                className="m-1"
-                href="#!"
-                role="button"
-              >
-                <MDBIcon fab icon="facebook-f" />
-              </MDBBtn>
-
-              <MDBBtn
-                outline
-                color="dark"
-                floating
-                className="m-1"
-                href="#!"
-                role="button"
-              >
-                <MDBIcon fab icon="twitter" />
-              </MDBBtn>
-
-              <MDBBtn
-                outline
-                color="dark"
-                floating
-                className="m-1"
-                href="#!"
-                role="button"
-              >
-                <MDBIcon fab icon="google" />
-              </MDBBtn>
-              <MDBBtn
-                outline
-                color="dark"
-                floating
-                className="m-1"
-                href="#!"
-                role="button"
-              >
-                <MDBIcon fab icon="instagram" />
-              </MDBBtn>
-
-              <MDBBtn
-                outline
-                color="dark"
-                floating
-                className="m-1"
-                href="#!"
-                role="button"
-              >
-                <MDBIcon fab icon="linkedin-in" />
-              </MDBBtn>
-
-              <MDBBtn
-                outline
-                color="dark"
-                floating
-                className="m-1"
-                href="#!"
-                role="button"
-              >
-                <MDBIcon fab icon="github" />
-              </MDBBtn>
-            </section>
-          </MDBContainer>
-
-          {/* <div
+        <Footer/>
+        {/* <div
             className="text-center p-3"
             style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
           >

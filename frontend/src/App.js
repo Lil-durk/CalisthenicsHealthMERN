@@ -1,6 +1,6 @@
 //import styling
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 
 //import packages
 import {
@@ -14,6 +14,7 @@ import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
 import Profile from "./components/Profile.js";
 import CardioWorkout from "./components/CardioWorkout.jsx";
+import NotFound from "./components/NotFound.js";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>

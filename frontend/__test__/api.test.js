@@ -5,7 +5,7 @@
 import React, { Component } from "react";
 import { screen, render, container } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import App from "../src/components/Home";
+import Home from "../src/components/Home";
 import ApiService from "../src/components/Services/ApiService";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
@@ -16,7 +16,7 @@ jest.mock("../src/components/Home.jsx", () => () => (
 
 describe("mock App tests", () => {
   test("mocked pages in App", () => {
-    const { container } = render(<App />);
+    const { container } = render(<Home />);
     console.log(container.outerHTML);
     const mockHomeComponent = container.querySelector("div#mockHomeComponent");
 
