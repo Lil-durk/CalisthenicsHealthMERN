@@ -2,8 +2,8 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Button from "react-bootstrap/Button";
 
-import { Link } from "react-router-dom";
-import Navibar from "./Navibar";
+// import { Link } from "react-router-dom";
+// import Navibar from "./Navibar";
 
 const Login = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();

@@ -1,19 +1,19 @@
+//import styling
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+//import packages
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 
-// import Home component
+// import page component
 import Home from "./components/Home.jsx";
-// import About component
 import Login from "./components/Login.jsx";
-// import ContactUs component
 import Profile from "./components/Profile.js";
+import CardioWorkout from "./components/CardioWorkout.jsx";
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
+          <Route path="cardioWorkout" element={<CardioWorkout />} />
 
           <Route path="/login" element={<Login />} />
 

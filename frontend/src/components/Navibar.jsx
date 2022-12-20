@@ -1,14 +1,14 @@
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
+//import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Login from "./Login";
 import Logout from "./Logout";
-import Profile from "./Profile";
+//import Profile from "./Profile";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 export default function Navibar() {
   const { isLoading, error, isAuthenticated } = useAuth0();
@@ -32,7 +32,7 @@ export default function Navibar() {
               <NavDropdown.Item href="#strengthWorkouts">
                 Strength workouts
               </NavDropdown.Item>
-              <NavDropdown.Item href="#cardioWorkouts">
+              <NavDropdown.Item href="/cardioWorkout">
                 Cardio workouts
               </NavDropdown.Item>
               <NavDropdown.Divider />
