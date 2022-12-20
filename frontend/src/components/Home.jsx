@@ -65,13 +65,8 @@ export default function App() {
         </Link>
 
         <Footer/>
-        {/* <div
-            className="text-center p-3"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
-          >
-            © 2022 Copyright: Dirk van der Enden
-          </div> */}
-        {/* <div>
+        
+        <div>
           <Table striped bordered hover variant="dark">
             <thead>
               <tr>
@@ -107,7 +102,7 @@ export default function App() {
               })}
             </tbody>
           </Table>
-        </div> */}
+        </div>
       </div>
     </>
   );
