@@ -24,10 +24,11 @@ export default function cardioWorkout() {
       <div style={backgrImg}>
         <Navibar />
 
-        <Container>
+        <Container style={{padding: "2%"}}>
           <Row>
             <Col style={{ backgroundColor: "white", textAlign: "center", padding: "2%", borderRadius: "10%", margin: 10 }}>
             <h1>Beginner</h1>
+            <hr style={{width: "80%", margin: "auto", padding: "1%"}}/>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -41,6 +42,7 @@ export default function cardioWorkout() {
             </Col>
             <Col style={{ backgroundColor: "white", textAlign: "center", padding: "2%", borderRadius: "10%", margin: 10 }}>
             <h1>Intermediate</h1>
+            <hr style={{width: "80%", margin: "auto", padding: "1%"}}/>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -52,7 +54,7 @@ export default function cardioWorkout() {
               publishing software like Aldus PageMaker including versions of
               Lorem Ipsum
             </Col>
-            <Col style={{ backgroundColor: "white", textAlign: "center", padding: "2%", borderRadius: "10%" }}>
+            <Col style={{ backgroundColor: "white", textAlign: "center", padding: "2%", borderRadius: "10%", margin: 10 }}>
             <h1>Advanced</h1>
             <hr style={{width: "80%", margin: "auto", padding: "1%"}}/>
               Lorem Ipsum is simply dummy text of the printing and typesetting
