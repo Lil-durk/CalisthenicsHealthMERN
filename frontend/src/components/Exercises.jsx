@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ApiService from "./Services/ApiService";
+import ApiServiceExercises from "./Services/ApiServiceExercises";
 import Navibar from "./Navibar";
 import "../App.css";
 import Footer from "./Footer";
@@ -9,9 +9,8 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 //import Button from "@mui/material/Button";
 
-
 const backgrImg = {
-  backgroundImage: `url(https://wallpapercave.com/wp/wp2346534.jpg)`,
+  backgroundImage: `url(https://strengthgang.com/wp-content/uploads/2021/10/pexels-cottonbro-7688862.jpg)`,
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center",
   backgroundSize: "cover",
@@ -29,24 +28,22 @@ const homeBtn = {
   borderRadius: "50%",
 };
 
-
-
 export default function App() {
-  const [users, setUsers] = React.useState([]);
+  const [exercises, setExercises] = React.useState([]);
 
   useEffect(() => {
-    ApiService.getUsers().then((response) => {
-      setUsers(response.data);
+    ApiServiceExercises.getExercises().then((response) => {
+      setExercises(response.data);
       console.log(response.data);
-      console.log(users);
+      console.log(exercises);
     });
   }, []);
 
-  const deleteUser = async (_id) => {
+  const deleteExercise = async (_id) => {
     try {
-      const res = await ApiService.deleteUser(_id);
-      console.log("User successfully deleted.");
-      alert("User deleted succesfully!");
+      const res = await ApiServiceExercises.deleteExercise(_id);
+      console.log("Exercise successfully deleted.");
+      alert("Exercise deleted succesfully!");
       window.location.reload();
     } catch (error) {
       alert(error);
@@ -58,40 +55,36 @@ export default function App() {
       <div style={backgrImg}>
         <Navibar />
 
-        <Link to="/cardioWorkout">
-          <Button type="button" class="btn btn-primary" style={homeBtn}>
-            Start your journey!
-          </Button>
-        </Link>
+        <Footer />
 
-        <Footer/>
-        
-        {/* <div>
+        <div style={{ padding: "3%" }}>
           <Table striped bordered hover variant="dark">
             <thead>
               <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Exercises</th>
               </tr>
             </thead>
             <tbody>
-              {users.map((userData) => {
+              {exercises.map((exercisesData) => {
                 return (
                   <>
                     <tr>
-                      <td>{userData.firstName}</td>
-                      <td>{userData.lastName}</td>
-                      <td>{userData.email}</td>
+                      <td>{exercisesData.exerciseName}</td>
+                      <td>
+                        <Button
+                          variant="primary"
+                          href={"exercise/" + exercisesData.exerciseName}
+                        >
+                          Go to {exercisesData.exerciseName}
+                        </Button>
+                      </td>
                       <td>
                         <Button variant="warning">Edit</Button>
                       </td>
                       <td>
                         <Button
                           variant="danger"
-                          onClick={() => deleteUser(userData._id)}
+                          onClick={() => deleteExercise(exercisesData._id)}
                         >
                           Delete
                         </Button>
@@ -102,7 +95,7 @@ export default function App() {
               })}
             </tbody>
           </Table>
-        </div> */}
+        </div>
       </div>
     </>
   );

@@ -30,7 +30,7 @@ export default function Navibar() {
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="#nutritions">Nutritions</Nav.Link>
             <NavDropdown title="Workouts" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#strengthWorkouts">
+              <NavDropdown.Item href="/strengthWorkout">
                 Strength workouts
               </NavDropdown.Item>
               <NavDropdown.Item href="/cardioWorkout">
@@ -41,6 +41,8 @@ export default function Navibar() {
                 Mixed workouts
               </NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/exercises">Exercises</Nav.Link>
+            <Nav.Link href="/addExercise">Add Exercise</Nav.Link>
           </Nav>
           {isAuthenticated && (
             <Button variant="outline-primary" style={{ marginRight: 10 }}>

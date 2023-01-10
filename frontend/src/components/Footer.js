@@ -14,8 +14,8 @@ const homeFooter = {
     alignItems: "center",
     textAlign: "center",
     bottom: 0,
-    left: "35%",
-    width: "30%",
+    left: "37%",
+    width: "25%",
     backgroundColor: "white",
   };
   
